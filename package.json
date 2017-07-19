@@ -2,7 +2,9 @@
   "name": "gl-matrix-ts",
   "version": "0.0.1",
   "description": "TypeScript port of gl-matrix",
-  "main": "index.js",
+  "main": "",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "repository": "https://github.com/pjoe/gl-matrix-ts.git",
   "author": "Pelle Johnsen",
   "license": "MIT",
@@ -22,6 +24,7 @@
     "typescript": "^2.4.1"
   },
   "scripts": {
+    "compile": "tsc",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'spec/**/*.ts'",
     "test": "karma start --single-run",
     "test:watch": "karma start"
