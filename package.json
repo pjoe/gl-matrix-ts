@@ -18,9 +18,11 @@
     "karma-spec-reporter": "^0.0.31",
     "karma-typescript": "^3.0.4",
     "karma-typescript-es6-transform": "^1.0.1",
+    "tslint": "^5.5.0",
     "typescript": "^2.4.1"
   },
   "scripts": {
+    "lint": "tslint -t codeFrame 'src/**/*.ts' 'spec/**/*.ts'",
     "test": "karma start --single-run",
     "test:watch": "karma start"
   }
