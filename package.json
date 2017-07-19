@@ -1,6 +1,6 @@
 {
   "name": "gl-matrix-ts",
-  "version": "0.0.1",
+  "version": "2.3.2",
   "description": "TypeScript port of gl-matrix",
   "main": "",
   "module": "dist/index.js",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "compile": "tsc",
-    "lint": "tslint -t codeFrame 'src/**/*.ts' 'spec/**/*.ts'",
+    "lint": "tslint -t codeFrame -p tsconfig.test.json",
     "test": "karma start --single-run",
     "test:watch": "karma start"
   }
