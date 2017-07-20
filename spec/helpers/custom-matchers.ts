@@ -31,6 +31,6 @@ beforeEach(() => {
 declare namespace jasmine {
     // tslint:disable-next-line:interface-name
     interface Matchers<T> {
-        toBeEqualish(expected: number | number[]): boolean
+        toBeEqualish(expected: number | number[] | Float32Array): boolean
     }
 }

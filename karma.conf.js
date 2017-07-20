@@ -1,4 +1,4 @@
-module.exports = function (config) {
+module.exports = function(config) {
     config.set({
         frameworks: ["jasmine", "karma-typescript"],
         files: [
@@ -7,26 +7,21 @@ module.exports = function (config) {
         ],
         preprocessors: {
             "src/**/*.[jt]s": ["karma-typescript"],
-            "spec/**/*.[jt]s": ["karma-typescript"],
+            "spec/**/*.[jt]s": ["karma-typescript"]
         },
         karmaTypescriptConfig: {
             bundlerOptions: {
-                transforms: [
-                    require("karma-typescript-es6-transform")()
-                ]
+                transforms: [require("karma-typescript-es6-transform")()]
             },
             compilerOptions: {
                 module: "commonjs"
             },
             coverageOptions: {
-                exclude: [
-                    /\.(d|spec|test)\.(ts)$/i,
-                    /\/spec\//i
-                ]
+                exclude: [/\.(d|spec|test)\.(ts)$/i, /\/spec\//i]
             },
             reports: {
-                "html": "coverage",
-                "text": ""
+                html: "coverage",
+                text: ""
             },
             tsconfig: "./tsconfig.test.json"
         },
@@ -42,5 +37,5 @@ module.exports = function (config) {
                 userAgent: "jsdom"
             }
         }
-    });
-};
+    })
+}
