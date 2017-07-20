@@ -15,6 +15,9 @@ module.exports = function (config) {
                     require("karma-typescript-es6-transform")()
                 ]
             },
+            compilerOptions: {
+                module: "commonjs"
+            },
             coverageOptions: {
                 exclude: [
                     /\.(d|spec|test)\.(ts)$/i,

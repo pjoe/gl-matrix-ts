@@ -5,7 +5,7 @@ beforeEach(() => {
         toBeEqualish() {
             return {
                 compare: (actual: any, expected: any) => {
-                    if (typeof (actual) === "number") {
+                    if (typeof actual === "number") {
                         return { pass: Math.abs(actual - expected) < EPSILON }
                     }
 
@@ -21,10 +21,9 @@ beforeEach(() => {
                         }
                     }
                     return { pass: true }
-                },
+                }
             }
-        },
-
+        }
     })
 })
 
@@ -32,6 +31,6 @@ beforeEach(() => {
 declare namespace jasmine {
     // tslint:disable-next-line:interface-name
     interface Matchers<T> {
-        toBeEqualish(expected: number | number[]): boolean;
+        toBeEqualish(expected: number | number[]): boolean
     }
 }
