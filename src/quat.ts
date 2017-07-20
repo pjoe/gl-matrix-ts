@@ -28,7 +28,7 @@ import * as vec4 from "./vec4"
  *
  * @returns {quat} a new quaternion
  */
-export function create() {
+export function create(): quattype {
     const out = new Float32Array(4)
     out[0] = 0
     out[1] = 0

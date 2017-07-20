@@ -23,7 +23,7 @@ module.exports = function(config) {
                 html: "coverage",
                 text: ""
             },
-            tsconfig: "./tsconfig.test.json"
+            tsconfig: "./tsconfig.json"
         },
         reporters: ["spec", "karma-typescript"],
         specReporter: {

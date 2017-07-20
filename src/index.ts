@@ -1,6 +1,9 @@
 import * as mat3 from "./mat3"
 export { mat3 }
 
+import * as mat4 from "./mat4"
+export { mat4 }
+
 import * as vec3 from "./vec3"
 export { vec3 }
 
