@@ -27,7 +27,7 @@
         "typescript": "^2.4.1"
     },
     "scripts": {
-        "compile": "tsc",
+        "compile": "tsc -p tsconfig.build.json",
         "lint": "tslint -t codeFrame -p tsconfig.json",
         "test": "karma start --single-run",
         "watch": "karma start",
