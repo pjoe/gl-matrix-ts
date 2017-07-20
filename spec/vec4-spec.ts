@@ -18,12 +18,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. */
 
+import { vec4type } from "../src/common"
 import { vec3, vec4 } from "../src/index"
 
 describe("vec4", () => {
-    let out: vec4.vec4type
-    let vecA: vec4.vec4type
-    let vecB: vec4.vec4type
+    let out: vec4type
+    let vecA: vec4type
+    let vecB: vec4type
     let result: any
 
     beforeEach(() => {
@@ -1002,7 +1003,7 @@ describe("vec4", () => {
                     0,
                     0,
                     0,
-                    (o: vec4.vec4type, vec: vec4.vec4type) => null
+                    (o: vec4type, vec: vec4type) => null
                 )
             })
 
@@ -1039,7 +1040,7 @@ describe("vec4", () => {
     })
 
     describe("exactEquals", () => {
-        let vecC: vec4.vec4type
+        let vecC: vec4type
         let r0: boolean
         let r1: boolean
         beforeEach(() => {
@@ -1065,8 +1066,8 @@ describe("vec4", () => {
     })
 
     describe("equals", () => {
-        let vecC: vec4.vec4type
-        let vecD: vec4.vec4type
+        let vecC: vec4type
+        let vecD: vec4type
         let r0: boolean
         let r1: boolean
         let r2: boolean

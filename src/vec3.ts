@@ -18,11 +18,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. */
 
-import * as common from "./common"
-
-export type vec3type = number[] | Float32Array
-export type mat4type = number[] | Float32Array
-export type quattype = number[] | Float32Array
+import { EPSILON, mat4type, quattype, vec3type } from "./common"
 
 /**
  * Creates a new, empty vec3
@@ -816,10 +812,9 @@ export function equals(a: vec3type, b: vec3type) {
     const b2 = b[2]
     return (
         Math.abs(a0 - b0) <=
-            common.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) &&
+            EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) &&
         Math.abs(a1 - b1) <=
-            common.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) &&
-        Math.abs(a2 - b2) <=
-            common.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2))
+            EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) &&
+        Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2))
     )
 }

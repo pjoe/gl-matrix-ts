@@ -18,15 +18,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. */
 
+import { vec3type } from "../src/common"
 import { vec3 } from "../src/index"
 
 describe("vec3", () => {
     // var mat3 = require("../../src/gl-matrix/mat3.js");
     // var mat4 = require("../../src/gl-matrix/mat4.js");
 
-    let out: vec3.vec3type
-    let vecA: vec3.vec3type
-    let vecB: vec3.vec3type
+    let out: vec3type
+    let vecA: vec3type
+    let vecB: vec3type
     let result: any
 
     beforeEach(() => {
