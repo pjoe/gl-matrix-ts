@@ -17,7 +17,7 @@ const degree = Math.PI / 180
  *
  * @param {Number} a Angle in Degrees
  */
-export function toRadians(a: number) {
+export function toRadian(a: number) {
     return a * degree
 }
 

@@ -9,7 +9,7 @@ describe("glMatrix", () => {
 
     describe("toRadian", () => {
         beforeEach(() => {
-            result = glMatrix.toRadians(180)
+            result = glMatrix.toRadian(180)
         })
         it("should return a value of 3.141592654(Math.PI)", () => {
             expect(result).toBeEqualish(Math.PI)
