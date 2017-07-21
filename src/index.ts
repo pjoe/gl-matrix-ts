@@ -1,3 +1,6 @@
+import * as common from "./common"
+export { common as glMatrix }
+
 import * as mat3 from "./mat3"
 export { mat3 }
 
