@@ -48,36 +48,34 @@ export function create(): quattype {
  * @param {vec3} b the destination vector
  * @returns {quat} out
  */
-export let rotationTo = (() => {
+export function rotationTo(out: quattype, a: vec3type, b: vec3type) {
+    // TODO: pre-allocate?
     const tmpvec3 = vec3.create()
     const xUnitVec3 = vec3.fromValues(1, 0, 0)
     const yUnitVec3 = vec3.fromValues(0, 1, 0)
 
-    return (out: quattype, a: vec3type, b: vec3type) => {
-        const d = vec3.dot(a, b)
-        if (d < -0.999999) {
-            vec3.cross(tmpvec3, xUnitVec3, a)
-            if (vec3.length(tmpvec3) < 0.000001)
-                vec3.cross(tmpvec3, yUnitVec3, a)
-            vec3.normalize(tmpvec3, tmpvec3)
-            setAxisAngle(out, tmpvec3, Math.PI)
-            return out
-        } else if (d > 0.999999) {
-            out[0] = 0
-            out[1] = 0
-            out[2] = 0
-            out[3] = 1
-            return out
-        } else {
-            vec3.cross(tmpvec3, a, b)
-            out[0] = tmpvec3[0]
-            out[1] = tmpvec3[1]
-            out[2] = tmpvec3[2]
-            out[3] = 1 + d
-            return normalize(out, out)
-        }
+    const d = vec3.dot(a, b)
+    if (d < -0.999999) {
+        vec3.cross(tmpvec3, xUnitVec3, a)
+        if (vec3.length(tmpvec3) < 0.000001) vec3.cross(tmpvec3, yUnitVec3, a)
+        vec3.normalize(tmpvec3, tmpvec3)
+        setAxisAngle(out, tmpvec3, Math.PI)
+        return out
+    } else if (d > 0.999999) {
+        out[0] = 0
+        out[1] = 0
+        out[2] = 0
+        out[3] = 1
+        return out
+    } else {
+        vec3.cross(tmpvec3, a, b)
+        out[0] = tmpvec3[0]
+        out[1] = tmpvec3[1]
+        out[2] = tmpvec3[2]
+        out[3] = 1 + d
+        return normalize(out, out)
     }
-})()
+}
 
 /**
  * Sets the specified quaternion with values corresponding to the given
@@ -89,25 +87,29 @@ export let rotationTo = (() => {
  * @param {vec3} up    the vector representing the local "up" direction
  * @returns {quat} out
  */
-export let setAxes = (() => {
+export function setAxes(
+    out: quattype,
+    view: vec3type,
+    right: vec3type,
+    up: vec3type
+) {
+    // TODO: pre-allocate?
     const matr = mat3.create()
 
-    return (out: quattype, view: vec3type, right: vec3type, up: vec3type) => {
-        matr[0] = right[0]
-        matr[3] = right[1]
-        matr[6] = right[2]
+    matr[0] = right[0]
+    matr[3] = right[1]
+    matr[6] = right[2]
 
-        matr[1] = up[0]
-        matr[4] = up[1]
-        matr[7] = up[2]
+    matr[1] = up[0]
+    matr[4] = up[1]
+    matr[7] = up[2]
 
-        matr[2] = -view[0]
-        matr[5] = -view[1]
-        matr[8] = -view[2]
+    matr[2] = -view[0]
+    matr[5] = -view[1]
+    matr[8] = -view[2]
 
-        return normalize(out, fromMat3(out, matr))
-    }
-})()
+    return normalize(out, fromMat3(out, matr))
+}
 
 /**
  * Creates a new quat initialized with values from an existing quaternion
@@ -457,25 +459,24 @@ export function slerp(out: quattype, a: quattype, b: quattype, t: number) {
  * @param {Number} t interpolation amount
  * @returns {quat} out
  */
-export let sqlerp = (() => {
+export function sqlerp(
+    out: quattype,
+    a: quattype,
+    b: quattype,
+    c: quattype,
+    d: quattype,
+    t: number
+) {
+    // TODO: pre-allocate?
     const temp1 = create()
     const temp2 = create()
 
-    return (
-        out: quattype,
-        a: quattype,
-        b: quattype,
-        c: quattype,
-        d: quattype,
-        t: number
-    ) => {
-        slerp(temp1, a, d, t)
-        slerp(temp2, b, c, t)
-        slerp(out, temp1, temp2, 2 * t * (1 - t))
+    slerp(temp1, a, d, t)
+    slerp(temp2, b, c, t)
+    slerp(out, temp1, temp2, 2 * t * (1 - t))
 
-        return out
-    }
-})()
+    return out
+}
 
 /**
  * Calculates the inverse of a quat

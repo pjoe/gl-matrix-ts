@@ -714,42 +714,41 @@ export function rotateZ(out: vec3type, a: vec3type, b: vec3type, c: number) {
  * @returns {Array} a
  * @function
  */
-export let forEach = (() => {
+export function forEach(
+    a: vec3type,
+    stride: number,
+    offset: number,
+    count: number,
+    fn: (out: vec3type, vec: vec3type, arg: any) => void,
+    arg?: any
+) {
+    // TODO: pre-allocate?
     const vec = create()
 
-    return (
-        a: vec3type,
-        stride: number,
-        offset: number,
-        count: number,
-        fn: (out: vec3type, vec: vec3type, arg: any) => void,
-        arg?: any
-    ) => {
-        let i
-        let l
-        if (!stride) {
-            stride = 3
-        }
-
-        if (!offset) {
-            offset = 0
-        }
-
-        l = count ? Math.min(count * stride + offset, a.length) : a.length
-
-        for (i = offset; i < l; i += stride) {
-            vec[0] = a[i]
-            vec[1] = a[i + 1]
-            vec[2] = a[i + 2]
-            fn(vec, vec, arg)
-            a[i] = vec[0]
-            a[i + 1] = vec[1]
-            a[i + 2] = vec[2]
-        }
-
-        return a
+    let i
+    let l
+    if (!stride) {
+        stride = 3
     }
-})()
+
+    if (!offset) {
+        offset = 0
+    }
+
+    l = count ? Math.min(count * stride + offset, a.length) : a.length
+
+    for (i = offset; i < l; i += stride) {
+        vec[0] = a[i]
+        vec[1] = a[i + 1]
+        vec[2] = a[i + 2]
+        fn(vec, vec, arg)
+        a[i] = vec[0]
+        a[i + 1] = vec[1]
+        a[i + 2] = vec[2]
+    }
+
+    return a
+}
 
 /**
  * Get the angle between two 3D vectors

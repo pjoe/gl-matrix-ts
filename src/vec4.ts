@@ -544,44 +544,43 @@ export function transformQuat(out: vec4type, a: vec4type, q: quattype) {
  * @returns {Array} a
  * @function
  */
-export let forEach = (() => {
+export function forEach(
+    a: vec4type,
+    stride: number,
+    offset: number,
+    count: number,
+    fn: (out: vec4type, vec: vec4type, arg: any) => void,
+    arg?: any
+) {
+    // TODO: pre-allocate?
     const vec = create()
 
-    return (
-        a: vec4type,
-        stride: number,
-        offset: number,
-        count: number,
-        fn: (out: vec4type, vec: vec4type, arg: any) => void,
-        arg?: any
-    ) => {
-        let i
-        let l
-        if (!stride) {
-            stride = 4
-        }
-
-        if (!offset) {
-            offset = 0
-        }
-
-        l = count ? Math.min(count * stride + offset, a.length) : a.length
-
-        for (i = offset; i < l; i += stride) {
-            vec[0] = a[i]
-            vec[1] = a[i + 1]
-            vec[2] = a[i + 2]
-            vec[3] = a[i + 3]
-            fn(vec, vec, arg)
-            a[i] = vec[0]
-            a[i + 1] = vec[1]
-            a[i + 2] = vec[2]
-            a[i + 3] = vec[3]
-        }
-
-        return a
+    let i
+    let l
+    if (!stride) {
+        stride = 4
     }
-})()
+
+    if (!offset) {
+        offset = 0
+    }
+
+    l = count ? Math.min(count * stride + offset, a.length) : a.length
+
+    for (i = offset; i < l; i += stride) {
+        vec[0] = a[i]
+        vec[1] = a[i + 1]
+        vec[2] = a[i + 2]
+        vec[3] = a[i + 3]
+        fn(vec, vec, arg)
+        a[i] = vec[0]
+        a[i + 1] = vec[1]
+        a[i + 2] = vec[2]
+        a[i + 3] = vec[3]
+    }
+
+    return a
+}
 
 /**
  * Returns a string representation of a vector
