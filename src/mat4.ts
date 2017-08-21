@@ -20,6 +20,8 @@ THE SOFTWARE. */
 
 import { EPSILON, mat4type, quattype, vec3type } from "./common"
 
+export type valueType = mat4type
+
 /**
  * Creates a new identity mat4
  *

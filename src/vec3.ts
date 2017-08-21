@@ -20,6 +20,8 @@ THE SOFTWARE. */
 
 import { EPSILON, mat4type, quattype, vec3type } from "./common"
 
+export type valueType = vec3type
+
 /**
  * Creates a new, empty vec3
  *

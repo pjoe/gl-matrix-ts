@@ -23,6 +23,8 @@ import * as mat3 from "./mat3"
 import * as vec3 from "./vec3"
 import * as vec4 from "./vec4"
 
+export type valueType = quattype
+
 /**
  * Creates a new identity quat
  *

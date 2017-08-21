@@ -1,6 +1,6 @@
 {
     "name": "gl-matrix-ts",
-    "version": "2.3.2",
+    "version": "2.3.3",
     "description": "TypeScript port of gl-matrix",
     "main": "",
     "module": "dist/index.js",

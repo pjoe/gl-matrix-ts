@@ -28,6 +28,8 @@ import {
     vec3type
 } from "./common"
 
+export type valueType = mat3type
+
 /**
  * Creates a new identity mat3
  *
